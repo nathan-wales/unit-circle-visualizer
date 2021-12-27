@@ -60,3 +60,41 @@ def draw_cos(canvas, width, scale, xstart, ystart, include_chart=True):
         canvas.create_line(xstart, prev_y, xstart+1, y2, width=2)
         xstart += 1
         prev_y = y2
+
+def draw_unit_circle(canvas, x0, y0, radius):
+    x1 = x0+  radius
+    y1 = y0 + radius
+    start_angle = 0
+    for i in range(4):
+        canvas.create_arc(x0, y0, x1, y1, extent=30, start=start_angle, width=2)
+        start_angle += 30
+        canvas.create_arc(x0, y0, x1, y1, extent=15, start=start_angle, width=2)
+        start_angle += 15
+        canvas.create_arc(x0, y0, x1, y1, extent=15, start=start_angle, width=2)
+        start_angle += 15
+        canvas.create_arc(x0, y0, x1, y1, extent=30, start=start_angle, width=2)
+        start_angle += 30
+
+    #(0,1)
+    canvas.create_text(x1+7, y0 + radius/2, anchor="w",text = "(1,0)")
+    canvas.create_text(x0 + radius/2, y0-7, anchor="s",text = "(0,1)")
+    canvas.create_text(x0-7, y0 + radius/2, anchor="e",text = "(-1,0)")
+    canvas.create_text(x0 + radius/2, y1+7, anchor="n",text = "(0,-1)")
+
+    #sqrt2/2
+    canvas.create_text(x1+15, y0+50, anchor="ne", text = "(\u221a2/2, \u221a2/2)")
+    canvas.create_text(x1+15, y1-50, anchor="se", text = "(\u221a2/2, -\u221a2/2)")
+    canvas.create_text(x0-15, y0+50, anchor="nw", text = "(-\u221a2/2, \u221a2/2)")
+    canvas.create_text(x0-15, y1-50, anchor="sw", text = "(-\u221a2/2, -\u221a2/2)")
+
+    #sqrt3, 1/2
+    canvas.create_text(x1+45, y0+100, anchor="ne", text = "(\u221a3/2, 1/2)")
+    canvas.create_text(x1+45, y1-100, anchor="se", text = "(\u221a3/2, -1/2)")
+    canvas.create_text(x0-45, y0+100, anchor="nw", text = "(-\u221a3/2, 1/2)")
+    canvas.create_text(x0-45, y1-100, anchor="sw", text = "(-\u221a3/2, -1/2)")
+
+    #1/2, sqrt3
+    canvas.create_text(x1-45, y0+10, anchor="ne", text = "(1/2,\u221a3/2)")
+    canvas.create_text(x1-45, y1-10, anchor="se", text = "(1/2,-\u221a3/2)")
+    canvas.create_text(x0+45, y0+10, anchor="nw", text = "(-1/2,\u221a3/2)")
+    canvas.create_text(x0+45, y1-10, anchor="sw", text = "(-1/2,-\u221a3/2)")
