@@ -61,7 +61,14 @@ def draw_cos(canvas, width, scale, xstart, ystart, include_chart=True):
         xstart += 1
         prev_y = y2
 
-def draw_unit_circle(canvas, x0, y0, radius):
+def draw_unit_circle(canvas, x0, y0):
+    """Draws the unit circle with a radius of 500.
+    
+    Arguments:\n
+    canvas -- the initialized tkinter canvas to draw the cosine wave on\n
+    x0,y0 -- the top left corner x and y coordinates
+    """
+    radius = 500
     x1 = x0+  radius
     y1 = y0 + radius
     start_angle = 0
@@ -98,3 +105,10 @@ def draw_unit_circle(canvas, x0, y0, radius):
     canvas.create_text(x1-45, y1-10, anchor="se", text = "(1/2,-\u221a3/2)")
     canvas.create_text(x0+45, y0+10, anchor="nw", text = "(-1/2,\u221a3/2)")
     canvas.create_text(x0+45, y1-10, anchor="sw", text = "(-1/2,-\u221a3/2)")
+
+def draw_buttons(canvas, x0, y0):
+    button_list = ["0", "\u03C0/6", "\u03C0/4", "\u03C0/3"]
+    for num in button_list:
+        b = tk.Button(canvas, text=num, height=1, width=1)
+        b.place(x=x0, y=y0)
+        x0 += 50
